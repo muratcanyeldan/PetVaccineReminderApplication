@@ -1,6 +1,6 @@
 package org.muratcan.petvaccine.reminder.enums;
 
-public enum AnimalType {
+public enum PetType {
     DOG,
     CAT
 }

@@ -1,16 +1,31 @@
 package org.muratcan.petvaccine.reminder.entity;
 
-import jakarta.persistence.Column;
-import org.muratcan.petvaccine.reminder.enums.AnimalType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class Vaccine extends BaseEntity {
+import java.time.LocalDate;
 
-    @Column(name = "vaccine_name")
-    private String vaccineName;
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Table(name = "vaccine")
+public class Vaccine {
 
-    @Column(name = "vaccine_description")
-    private String vaccineDescription;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "vaccine_animal_type")
-    private AnimalType vaccineAnimalType;
+    private String name;
+    private LocalDate dueDate;
+    private int reminderFrequencyInMonths;
+
 }
