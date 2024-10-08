@@ -1,0 +1,59 @@
+keycloak:
+  realm: pet-vaccine
+  auth-server-url: http://keycloak:8080/auth
+  resource: pet-vaccine-client
+  credentials:
+    secret: <INSERT_SECRET>
+  bearer-only: false
+  realm-key: <INSERT_REALM_KEY>
+  ssl-required: no
+  use-resource-role-mappings: true
+
+server:
+  port: 8085
+
+spring:
+  application:
+    name: PetVaccineReminderApplication
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/realms/pet-vaccine
+          jwk-set-uri: http://keycloak:8080/realms/pet-vaccine/protocol/openid-connect/certs
+  datasource:
+    url: jdbc:postgresql://postgres-app:5432/petvaccine
+    username: <INSERT_DB_USERNAME>
+    password: <INSERT_DB_PASS>
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  kafka:
+    bootstrap-servers: kafka:9092
+    consumer:
+      group-id: vaccine-reminder-group
+      auto-offset-reset: earliest
+    producer:
+      retries: 3
+    listener:
+      missing-topics-fatal: false
+    template:
+      default-topic: vaccine-reminder-topic
+
+telegram:
+  bot:
+    token: <INSERT_BOT_TOKEN>
+    username: <INSERT_BOT_USERNAME>
+
+keycloak-service:
+  params:
+    realms-url: http://keycloak:8080/realms/
+    admin-url: http://keycloak:8080/admin/realms
+
+kafka:
+  topic:
+    reminder-topic: vaccine-reminder-topic
+    reminder-deadletter-topic: vaccine-dead-letter-topic

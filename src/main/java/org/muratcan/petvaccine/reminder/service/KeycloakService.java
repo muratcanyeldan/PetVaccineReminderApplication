@@ -79,8 +79,6 @@ public class KeycloakService {
         credentials.put(KeycloakConstants.VALUE, userRegistrationDTO.getPassword());
         requestBody.put(KeycloakConstants.CREDENTIALS, List.of(credentials));
 
-        requestBody.put("requiredActions", List.of("VERIFY_EMAIL"));
-
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
 
         try {

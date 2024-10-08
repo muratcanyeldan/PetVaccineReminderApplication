@@ -19,4 +19,6 @@ public class KeycloakConfig {
     private String realmUrl;
     @Value("${keycloak-service.params.admin-url}")
     private String adminUrl;
+    @Value("${keycloak.realm-key}")
+    private String realmKey;
 }

@@ -5,7 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.muratcan.petvaccine.reminder.config.JwtConfig;
+import org.muratcan.petvaccine.reminder.config.KeycloakConfig;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -24,7 +24,7 @@ import java.util.Base64;
 public class JwtUtil {
 
     private static final String INVALID_JWT_TOKEN = "Invalid JWT token";
-    private final JwtConfig jwtConfig;
+    private final KeycloakConfig keycloakConfig;
 
     public String getPreferredUsername(HttpServletRequest request) {
         return extractPreferredUsername(getJwtFromRequest(request));
@@ -76,7 +76,7 @@ public class JwtUtil {
 
     private Claims getClaimsFromToken(String token) {
         try {
-            PublicKey publicKey = getPublicKey(jwtConfig.getSecretKey());
+            PublicKey publicKey = getPublicKey(keycloakConfig.getRealmKey());
             return Jwts.parser()
                     .verifyWith(publicKey)
                     .build()
