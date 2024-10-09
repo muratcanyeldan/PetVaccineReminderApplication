@@ -1,5 +1,9 @@
 ![GitHub CI](https://github.com/muratcanyeldan/PetVaccineReminderApplication/actions/workflows/maven.yml/badge.svg)
 
+[![Linkedin](https://i.sstatic.net/gVE0j.png) LinkedIn](https://www.linkedin.com/in/muratcanyeldan/)
+&nbsp;
+[![GitHub](https://i.sstatic.net/tskMh.png) GitHub](https://github.com/muratcanyeldan) 
+
 # Pet Vaccine Reminder Application
 
 This application is designed to help users manage their pets' vaccine schedules. It integrates with Keycloak for authentication, Apache Kafka for message-driven architecture, and uses PostgreSQL for persistence.
