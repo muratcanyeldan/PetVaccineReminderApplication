@@ -13,4 +13,4 @@ WORKDIR /opt/reminder
 
 COPY --from=maven /opt/reminder/target/${JAR_FILE} /opt/reminder/
 
-ENTRYPOINT ["java","-Xdebug","-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000","-jar","PetVaccineReminder.jar"]
+ENTRYPOINT ["java","-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000","-jar","PetVaccineReminder.jar"]
