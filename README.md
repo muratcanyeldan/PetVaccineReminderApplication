@@ -1,5 +1,7 @@
 ![GitHub CI](https://github.com/muratcanyeldan/PetVaccineReminderApplication/actions/workflows/maven.yml/badge.svg)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 [![Linkedin](https://i.sstatic.net/gVE0j.png) LinkedIn](https://www.linkedin.com/in/muratcanyeldan/)
 &nbsp;
 [![GitHub](https://i.sstatic.net/tskMh.png) GitHub](https://github.com/muratcanyeldan) 
