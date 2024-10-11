@@ -27,11 +27,13 @@ public class VaccineReminderScheduler {
         for (Pet pet : pets) {
             for (Vaccine vaccine : pet.getVaccines()) {
                 if (isDue(vaccine)) {
-                    VaccineReminder vaccineReminder = new VaccineReminder();
                     String message = generateReminderMessage(pet, vaccine);
                     User user = pet.getUser();
-                    vaccineReminder.setMessage(message);
-                    vaccineReminder.setChatId(user.getChatId());
+                    VaccineReminder vaccineReminder = VaccineReminder.builder()
+                            .message(message)
+                            .chatId(user.getChatId())
+                            .userId(user.getId())
+                            .build();
                     vaccineReminderProducer.sendVaccineReminder(vaccineReminder);
                 }
             }
