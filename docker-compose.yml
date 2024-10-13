@@ -48,6 +48,7 @@ services:
       KC_DB_PASSWORD: keycloak
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HEALTH_ENABLED: true
       KEYCLOAK_IMPORT: /opt/keycloak/data/import/realm-export.json -Dkeycloak.profile.feature.upload_scripts=enabled
     command: [ "start-dev", "--import-realm" ]
     volumes:
@@ -58,6 +59,11 @@ services:
       - postgres
     networks:
       - backend-network
+    healthcheck:
+      test: [ "CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/9000; echo -e 'GET /health/ready HTTP/1.1\r\nHost: localhost:9000\r\nConnection: close\r\n\r\n' >&3;cat <&3 | grep -q '\"status\": \"UP\"' && exit 0 || exit 1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   pgadmin:
     image: dpage/pgadmin4
@@ -76,6 +82,12 @@ services:
         condition: service_healthy
     networks:
       - backend-network
+    healthcheck:
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:80/misc/ping" ]
+      interval: 10s
+      timeout: 10s
+      start_period: 160s
+      retries: 3
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
@@ -150,6 +162,12 @@ services:
         condition: service_healthy
     networks:
       - backend-network
+    healthcheck:
+      test: "wget -T5 -qO- http://localhost:8085/actuator/health | grep UP || exit 1"
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
 
 volumes:
   postgres_keycloak:

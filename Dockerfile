@@ -5,7 +5,7 @@ WORKDIR /opt/reminder
 COPY . /opt/reminder
 RUN mvn clean install
 
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:21.0.4_7-jre-alpine
 
 ARG JAR_FILE=PetVaccineReminder.jar
 
