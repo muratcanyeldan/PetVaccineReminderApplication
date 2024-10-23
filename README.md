@@ -5,6 +5,14 @@
 [![Linkedin](https://i.sstatic.net/gVE0j.png) LinkedIn](https://www.linkedin.com/in/muratcanyeldan/)
 &nbsp;
 [![GitHub](https://i.sstatic.net/tskMh.png) GitHub](https://github.com/muratcanyeldan) 
+&nbsp;
+
+# My Related Articles on Medium
+
+[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white) How to Remote Debug a Containerized Java Application with IntelliJ IDEA](https://muratcanyeldan.com/how-to-remote-debug-a-containerized-java-application-with-intellij-idea-45cd9de7ee9a)
+&nbsp;
+[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white) Implementing Kafka and Dead Letter Queue in Java](https://medium.com/@muratcanyeldan/implementing-kafka-and-dead-letter-queue-in-java-f0938276f217)
+
 
 # Pet Vaccine Reminder Application
 
